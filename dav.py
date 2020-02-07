@@ -26,10 +26,6 @@ def get_config():
 def main():
 	argv = args[1:]
 
-	# python version
-	# may have to use python3
-	py = "python"
-
 	if (len(argv) == 0):
 		print("""
 ██████╗  █████╗ ██╗   ██╗
