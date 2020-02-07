@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# shellcheck disable=SC2164
+cd ~/dav-cli
+# shellcheck disable=SC2048
+python3 dav.py $*

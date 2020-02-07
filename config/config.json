@@ -1,0 +1,122 @@
+{
+  "modules": {
+    "calendar": {
+      "module": "calendar",
+      "tag": [
+        "calendar",
+        "cal"
+      ],
+      "file": "calendav_main.py",
+      "description": "calendar app",
+      "runwith": "python"
+    },
+    "download": {
+      "module": "download",
+      "tag": [
+        "download",
+        "dl"
+      ],
+      "file": "downloader.py",
+      "description": "download the songs from a txt file",
+      "runwith": "python"
+    },
+    "hotmail": {
+      "module": "email",
+      "tag": [
+        "hotmail"
+      ],
+      "file": "myemail.py h",
+      "description": "check hotmail inbox",
+      "emailadd": "changeConfigFile@hotmail.com",
+      "runwith": "python"
+    },
+    "gmail": {
+      "module": "email",
+      "tag": [
+        "gmail"
+      ],
+      "file": "myemail.py g",
+      "description": "check gmail inbox",
+      "emailadd": "changeConfigFile@gmail.com",
+      "runwith": "python"
+    },
+    "music": {
+      "module": "other",
+      "tag": [
+        "music"
+      ],
+      "file": "other.py music",
+      "description": "open music folder",
+      "path": "MyMusic",
+      "runwith": "python"
+    },
+    "games": {
+      "module": "games",
+      "tag": [
+        "games"
+      ],
+      "file": "games.py",
+      "description": "play a game!",
+      "runwith": "python"
+    },
+    "search": {
+      "module": "search",
+      "tag": [
+        "search",
+        "s"
+      ],
+      "file": "mysearch.py",
+      "description": "search on google",
+      "browser": "chrome",
+      "runwith": "python"
+    },
+    "parrot": {
+      "module": "fun",
+      "tag": [
+        "parrot"
+      ],
+      "file": "fun.py parrot",
+      "description": "dancing parrot",
+      "runwith": "python"
+    },
+    "joke": {
+      "module": "fun",
+      "tag": [
+        "joke"
+      ],
+      "file": "fun.py joke",
+      "description": "get a bad joke!",
+      "runwith": "python"
+    },
+    "edit": {
+      "module": "other",
+      "tag": [
+        "edit"
+      ],
+      "file": "other.py edit",
+      "description": "edit the project (default text editor is sublime text)",
+      "runwith": "python"
+    },
+    "config": {
+      "module": "other",
+      "tag": [
+        "config"
+      ],
+      "file": "other.py config",
+      "description": "open config file",
+      "runwith": "python"
+    },
+    "custom module": {
+      "module": "mymodule",
+      "tag": [
+        "temp"
+      ],
+      "file": "template.py",
+      "description": "template module. use dav [temp]",
+      "runwith": "python"
+    }
+  },
+  "text_editor": "subl",
+  "paths": {
+  }
+}
