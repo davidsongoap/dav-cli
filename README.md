@@ -34,7 +34,7 @@ dav-cli
 ...
 ```
 * Add the new module to the config file
- ```json
+ ```
 "custom module name": {
   "module": "mynewmodule",
   "tag": [
