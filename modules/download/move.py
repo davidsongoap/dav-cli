@@ -11,6 +11,8 @@ import sys
 
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
 import dav
+
+
 def main():
 	directory = "./Songs"
 
@@ -36,10 +38,6 @@ def main():
 		os.system(f"mkdir {artist_path}")
 		print(f"created a folder for the artists")
 
-	# personal folder for my organization
-	phone_path = f'{all_music_path}\\phone'
-
-
 	def get_artists():
 		s = os.listdir(artist_path)
 		artists = []
@@ -50,12 +48,10 @@ def main():
 		artists = np.array(artists)
 		return artists
 
-
 	# all artists with a folder
 	artists = get_artists()
 	if len(artists):
 		artists = np.char.lower(artists)
-
 
 	def handle_name(original_name):
 		s = np.array(list(original_name))
@@ -101,7 +97,6 @@ def main():
 		os.rename(f"{directory}\\{original_name}", f"{directory}\\{final_name}")
 		return final_name
 
-
 	def move_file(name):
 		name = name.strip()
 		global artists
@@ -131,7 +126,6 @@ def main():
 		except:
 			print(f"{name} already exists in the library!")
 
-
 	print("Moving...")
 	for filename in os.listdir(directory):
 		if filename.endswith(".mp3"):
@@ -140,5 +134,6 @@ def main():
 			# move song
 			move_file(new_name)
 
+
 if __name__ == '__main__':
-    main()
+	main()
