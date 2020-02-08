@@ -88,7 +88,9 @@ def main():
 	# Download Songs
 	try:
 		for i in tqdm(range(len(lines))):
-			url = lines[i]
+			url = lines[i].strip()
+			# skip empty urls
+			if not url: continue
 			os.system(f'youtube-dl --extract-audio -q -x --audio-format mp3 {url}')
 		open(path, 'w').close()
 	except:
