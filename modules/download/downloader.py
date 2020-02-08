@@ -25,10 +25,6 @@ def main():
 	# read config file
 	config = dav.get_config()
 
-	# python version
-	# may have to use python3
-	py = "python"
-
 	# Song Directory
 	if not os.path.exists('Songs'):
 		os.mkdir('Songs')
@@ -50,7 +46,7 @@ def main():
 
 	elif args[0] == 'move':
 		os.chdir('..')
-		os.system('move.py')
+		os.system(f'{config["modules"]["download"]["runwith"]} move.py')
 		exit(0)
 
 	elif args[0] == 'edit':
@@ -98,7 +94,7 @@ def main():
 
 	# move downloaded song
 	os.chdir('..')
-	os.system(f'{py} move.py')
+	os.system(f'{config["modules"]["download"]["runwith"]} move.py')
 
 
 if __name__ == "__main__":
