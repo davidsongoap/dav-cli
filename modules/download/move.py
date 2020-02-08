@@ -28,7 +28,7 @@ def main():
 	config = dav.get_config()
 
 	artist_path = f'{os.environ["USERPROFILE"]}\\{config["modules"]["music"]["path"]}\\Artists'
-	all_music_path = f'{os.environ["USERPROFILE"]}\\{config["modules"]["music"]["path"]}\\AllMusic'
+	all_music_path = f'{os.environ["USERPROFILE"]}\\{config["modules"]["music"]["path"]}\\All Music'
 
 	if not os.path.exists(all_music_path):
 		os.system(f"mkdir {all_music_path}")
@@ -99,7 +99,6 @@ def main():
 
 	def move_file(name):
 		name = name.strip()
-		global artists
 		s = np.array(list(name))
 		t = np.where(s == '-')
 		if (len(t[0]) > 0):
