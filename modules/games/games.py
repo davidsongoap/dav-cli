@@ -18,6 +18,7 @@ def main():
 	if len(args) == 0:
 		print("no game selected!")
 		print("use dav games <gametitle>")
+		print("or dav [list] for the games available")
 		exit(0)
 
 	game = args[0].lower()
@@ -31,8 +32,8 @@ def main():
 		exit(0)
 	else:
 		print("""
-	Invalid game 
-	use games [list] for the games available""")
+Invalid game 
+use games [list] for the games available""")
 
 
 if __name__ == '__main__':
