@@ -6,7 +6,8 @@
 
 import email, getpass, imaplib
 from email.header import decode_header, make_header
-from sys import argv, exit
+from sys import argv as args
+from sys import exit
 import json
 import os
 import sys
@@ -14,7 +15,7 @@ import sys
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
 import dav
 def main():
-	argv = list(map(str.lower, argv[1:]))
+	argv = list(map(str.lower, args[1:]))
 
 	# read config file
 	config = dav.get_config()
