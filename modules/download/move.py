@@ -54,20 +54,10 @@ def main():
 		artists = np.char.lower(artists)
 
 	def handle_name(original_name):
-		s = np.array(list(original_name))
-		t = np.where(s == '-')
-		if len(t[0]) > 1:
-			s = s[0:t[0][-1]]
-			final_name = "".join(list(s)).strip() + ".mp3"
-		elif len(t[0]) == 1:
-			s = s[0:t[0][0]]
-			final_name = "".join(list(s)).strip() + ".mp3"
-		else:
-			final_name = "".join(list(s))
 
 		# text to be removed from the title
 		# TODO use regular expression somehow
-		final_name = final_name.replace('(Official Audio)', '')
+		final_name = original_name.replace('(Official Audio)', '')
 		final_name = final_name.replace('(Official Music Video)', '')
 		final_name = final_name.replace('[Official Audio]', '')
 		final_name = final_name.replace('[Official Video]', '')
