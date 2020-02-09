@@ -127,12 +127,32 @@ class Calendar:
 				self.update_event_file()
 		print("Calendar clear was cancelled")
 
+	def get_current_month_events(self, dates):
+		month_dates = []
+
+		for id, date in self.get_event_dates():
+			if date.month == self.today.month:
+				month_dates.append(date)
+		return month_dates
+
 	def get_current_month(self):
 		"""
 		Returns current month as string
+		With the events colored
 		:return: str
 		"""
-		return calendar.month(self.today.year, self.today.month, 4, 2)
+		month_str = calendar.month(self.today.year, self.today.month, 4, 2)
+		dates = self.get_current_month_events(self.get_event_dates())
+
+		month_str = month_str.replace(f' {self.today.day}', f' \033[92m{self.today.day}\033[0m')
+
+		for date in dates:
+			if date.day != self.today.day:
+				month_str = month_str.replace(f' {date.day}', f' \033[93m{date.day}\033[0m')
+			else:
+				month_str = month_str.replace(f'\033[92m{self.today.day}\033[0m', f'\033[91m{date.day}\033[0m')
+		month_str = month_str.replace(f'{self.today.year}', f'\033[97m{self.today.year}\033[0m')
+		return month_str
 
 	def get_events_max_id(self):
 		"""
