@@ -70,15 +70,6 @@
       "browser": "chrome",
       "runwith": "python"
     },
-    "parrot": {
-      "module": "fun",
-      "tag": [
-        "parrot"
-      ],
-      "file": "fun.py parrot",
-      "description": "dancing parrot",
-      "runwith": "python"
-    },
     "joke": {
       "module": "fun",
       "tag": [

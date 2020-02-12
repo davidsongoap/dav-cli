@@ -16,9 +16,6 @@ def main():
 		print("no item selected :(")
 		exit(0)
 
-	elif args[0] == "parrot":
-		os.system("curl parrot.live")
-
 	elif args[0] == "joke":
 		os.system(f'curl -H "Accept: text/plain" https://icanhazdadjoke.com/')
 
