@@ -14,7 +14,7 @@ cd dav-cli
 pip install -r Requirements.txt
 ```
 Or download the zip, place it in your home directory as ```dav-cli``` and **install the requirements**
-* Now add the path ```dav-cli\dist\dist-win\``` to your environment variables
+* Now add the path ```%userprofile%\dav-cli\dist\dist-win\``` to your environment variables
 * Try it out!
 
 ![dav usage example](other/img/example.png)
