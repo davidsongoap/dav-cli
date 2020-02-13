@@ -48,15 +48,15 @@ def main():
 
 	elif args[0] in ["help", "h"]:
 		print("""
-calendar <empty>            : show full calendar
-calendar next               : show next event
-calendar add                : add event
-calendar rem <event number> : remove the event of the given number
-calendar clear              : clear calendar
-calendar year               : open current year calendar
-calendar month              : open current month calendar
-calendar file               : open calendar json files
-calendar edit               : edit script""")
+calendar <empty>              : show full calendar
+calendar [next]               : show next event
+calendar [add]                : add event
+calendar [rem] <event number> : remove the event of the given number
+calendar [clear]              : clear calendar
+calendar [year]               : open current year calendar
+calendar [month]              : open current month calendar
+calendar [file]               : open calendar json files
+calendar [edit]               : edit script""")
 
 	else:
 		print("Invalid argument use calendar [h] for help")
