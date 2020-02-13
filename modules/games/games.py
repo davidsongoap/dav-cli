@@ -7,9 +7,14 @@
 from sys import argv
 from sys import exit
 import subprocess
+import sys
+import os
 
 from difflib import SequenceMatcher
+sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
+import dav
 
+config = dav.get_config()
 
 def main():
 	args = list(map(str.lower, argv[1:]))
@@ -24,7 +29,7 @@ def main():
 	game = args[0].lower()
 
 	if SequenceMatcher(a=game, b="tron").ratio() > similarity:
-		subprocess.Popen(f"chrome -new-tab https://davidsongoap.github.io/tronjs/", shell=True)
+		subprocess.Popen(f"{config['browser']} https://davidsongoap.github.io/tronjs/", shell=True)
 
 	elif SequenceMatcher(a=game, b="list").ratio() > similarity:
 		print("""Game List:
