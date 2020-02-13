@@ -55,9 +55,9 @@ def main():
 				exit(0)
 			elif argv[i] in ["help", "h"]:
 				print("""
-mail <empty>   : show 5 unread emails
-mail all       : show all emails (read or unread)
-mail <number>  : show <n> emails """)
+mail <empty>    : show 5 unread emails
+mail [all]      : show all emails (read or unread)
+mail <number>   : show <n> emails """)
 				exit(0)
 
 	print(f"Email: {user}")
