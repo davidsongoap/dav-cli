@@ -55,11 +55,11 @@ def main():
 		exit(0)
 	elif args[0] in ["help", "h"]:
 		print("""
-	download <empty>    : start download from urllist.txt
-	download file       : open urllist.txt file 
-	download <file.txt> : download songs from given file
-	download move       : move downloaded songs
-	download edit       : edit script""")
+	download <empty>      : start download from urllist.txt
+	download [file]       : open urllist.txt file 
+	download <file.txt>   : download songs from given file
+	download [move]       : move downloaded songs
+	download [edit]       : edit script""")
 		exit(0)
 	else:
 		print("file must be a .txt")
