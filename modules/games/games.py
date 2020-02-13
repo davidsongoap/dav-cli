@@ -23,7 +23,7 @@ def main():
 	if len(args) == 0:
 		print("no game selected!")
 		print("use dav games <gametitle>")
-		print("or dav [list] for the games available")
+		print("or dav games [list] for the games available")
 		exit(0)
 
 	game = args[0].lower()
