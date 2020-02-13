@@ -3,6 +3,7 @@
 # Author: Davidson Gonçalves
 # Module: Dav
 # Dav Project
+
 import sys
 from sys import exit
 from sys import argv as args
@@ -36,54 +37,51 @@ def main():
 ╚═════╝ ╚═╝  ╚═╝  ╚═══╝
 
 Welcome to Dav
-use dav <module> <args>
-or dav [h] for help""")
+use dav [module] <args>
+use dav [help] or [h] for help""")
 		exit(0)
 
 	argv = list(map(str.lower, argv))
 	arg_mod = argv[0]
 	ar = " ".join(argv[1:])
 
-	similarity = 0.8
-
-	module_dict = {}
 	module_list = []
 	config = get_config()
 
 	modules = config["modules"]
 	tags = []
 
-	for i in list(modules.keys()): module_list.append(i)
-
-	for i in module_list:
-		mod = modules[i]
-		for j in mod["tag"]:
-			module_dict[j] = (mod["file"], mod["module"], i)
-			tags.append(j)
-
-	for tag in tags:
-		if SequenceMatcher(a=arg_mod, b=tag).ratio() > similarity:
-			os.chdir(f"./modules/{module_dict[tag][1]}")
-			os.system(f"{config['modules'][module_dict[tag][2]]['runwith']} {module_dict[tag][0]} {ar}")
-			exit(0)
+	similarity = 0.8
+	for mod_name in list(modules.keys()):
+		module_list.append(mod_name)
+		mod = modules[mod_name]
+		mod_tags = []
+		for tag in mod["tag"]:
+			if SequenceMatcher(a=arg_mod, b=tag).ratio() > similarity:
+				os.chdir(f"./modules/{mod['module']}")
+				os.system(f"{config['modules'][mod_name]['runwith']} {mod['file']} {ar}")
+				exit(0)
+			mod_tags.append(f'[{tag}]')
+		tags.append(" or ".join(mod_tags))
 
 	descs = ""
-	reg = "{" + f":{len(max(module_list, key=len))}" + "}"
+	reg = "{" + f":{len(max(tags, key=len))}" + "}"
 
-	for i in module_list:
-		mod = modules[i]
-		mod_name = reg.format(i)
+	for i in range(len(module_list)):
+		mod = modules[module_list[i]]
+		mod_name = reg.format(tags[i])
 		descs += f"\n{mod_name}  :  {mod['description']}"
+
 	if SequenceMatcher(a=arg_mod, b="help").ratio() > 0.7 or arg_mod == "h":
 		print(f"""
-use dav <module> <args>
-or use dav [edit] to edit the projects
+use dav [module] <args>
+use dav [edit] to edit the projects
 
 MODULE LIST:
 {descs}""")
-
 	else:
-		print(f"Unknown module \"{arg_mod}\"")
+		print(f"Unknown module \"{arg_mod}\"\n"
+			  f"use dav [help] or [h]")
 
 
 if __name__ == "__main__":
