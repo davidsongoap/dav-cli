@@ -4,6 +4,8 @@
 # Module: Games
 # Dav Project
 
+# imports
+import dav
 from sys import argv
 from sys import exit
 import subprocess
@@ -12,9 +14,9 @@ import os
 
 from difflib import SequenceMatcher
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
-import dav
 
 config = dav.get_config()
+
 
 def main():
 	args = list(map(str.lower, argv[1:]))
