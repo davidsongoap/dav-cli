@@ -4,6 +4,7 @@
 # Module: Dav
 # Dav Project
 
+# imports
 import sys
 from sys import exit
 from sys import argv as args
@@ -16,11 +17,10 @@ if sys.version_info[0] < 3:
 	exit(0)
 
 
-# read file
 def get_config():
+	# read file
 	with open(f'{os.environ["USERPROFILE"]}\\dav-cli\\config\\config.json', 'r') as myfile:
 		read_data = myfile.read()
-	myfile.close()
 	return json.loads(read_data)
 
 
