@@ -5,7 +5,6 @@
 # Dav Project
 
 # imports
-from dav import get_config
 import os
 from sys import argv, exit
 import sys
@@ -14,6 +13,7 @@ from tqdm import tqdm
 import colorama
 colorama.init()
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
+from dav import get_config
 
 # read config file
 config = get_config()
