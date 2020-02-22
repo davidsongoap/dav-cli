@@ -91,7 +91,7 @@ def move_file(name):
 		if (len(x[0]) > 0):
 			# artist already has a folder, puts the song there
 			shutil.copy(f"{directory}\\{name}",
-						f"{artist_path}{artists[x[0][0]]}")
+						f"{artist_path}\\{artists[x[0][0]]}")
 		else:
 			# creates a folder for the artist
 			print(f"Created a folder for the artist: {artist}")
