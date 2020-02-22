@@ -7,6 +7,8 @@
 import json
 from datetime import datetime
 import calendar
+import colorama
+colorama.init()
 
 
 class Calendar:
@@ -64,7 +66,8 @@ class Calendar:
 		"""
 		dates_after_today = []
 		for i in range(len(date_list)):
-			if date_list[i][1] >= self.today: dates_after_today.append(date_list[i][1])
+			if date_list[i][1] >= self.today:
+				dates_after_today.append(date_list[i][1])
 		return dates_after_today
 
 	def nearest_events(self):
@@ -76,11 +79,13 @@ class Calendar:
 		date_list = self.get_event_dates()
 		dates_after_today = self.get_events_after_today(date_list)
 		try:
-			min_date = min(dates_after_today, key=lambda x: abs(x - self.today))
+			min_date = min(dates_after_today,
+						   key=lambda x: abs(x - self.today))
 			ids = []
 			# get the ids of the events on this date
 			for i in date_list:
-				if i[1] == min_date: ids.append(i[0])
+				if i[1] == min_date:
+					ids.append(i[0])
 			return (min_date, ids)
 		except:
 			return (None, None)
@@ -105,7 +110,8 @@ class Calendar:
 		desc = []
 		for id in ids:
 			for ev in self.events:
-				if ev["id"] == id: desc.append(ev["description"])
+				if ev["id"] == id:
+					desc.append(ev["description"])
 
 		# show events
 		print("Next event at:")
@@ -127,13 +133,36 @@ class Calendar:
 				self.update_event_file()
 		print("Calendar clear was cancelled")
 
+	def get_current_month_events(self, dates):
+		month_dates = []
+		for id, date in self.get_event_dates():
+			if date.month == self.today.month:
+				month_dates.append(date)
+		return month_dates
+
 	def get_current_month(self):
 		"""
 		Returns current month as string
+		With the events colored
 		:return: str
 		"""
-		return calendar.month(self.today.year, self.today.month, 4, 2)
+		month_str = calendar.month(self.today.year, self.today.month, 4, 2)
+		dates = self.get_current_month_events(self.get_event_dates())
 
+		month_str = month_str.replace(f' {self.today.day}',
+									  f' \033[92m{self.today.day}\033[0m')
+
+		for date in dates:
+			if date.day != self.today.day:
+				month_str = month_str.replace(f' {date.day}',
+											  f' \033[93m{date.day}\033[0m')
+			else:
+				month_str = month_str.replace(
+					f'\033[92m{self.today.day}\033[0m',
+					f'\033[91m{date.day}\033[0m')
+		month_str = month_str.replace(f'{self.today.year}',
+									  f'\033[97m{self.today.year}\033[0m')
+		return month_str
 
 	def get_events_max_id(self):
 		"""
@@ -150,7 +179,7 @@ class Calendar:
 		Print the current month
 		:return: None
 		"""
-		print("\n"+self.get_current_month(),end=" ")
+		print("\n"+self.get_current_month(), end=" ")
 
 	def get_current_year(self):
 		"""
@@ -194,13 +223,15 @@ class Calendar:
 		year = input(f"year({current_year}): ").strip()
 
 		# assumes as the current year if no year is provided
-		if not year: year = current_year
+		if not year:
+			year = current_year
 		new_desc = input("Description: ").strip()
 		id = self.get_events_max_id() + 1
 
 		try:
 			# date validation
-			new_ev_date = datetime(day=int(day), month=int(month), year=int(year))
+			new_ev_date = datetime(
+				day=int(day), month=int(month), year=int(year))
 
 			# create event
 			new_event = {
@@ -216,6 +247,7 @@ class Calendar:
 			self.update_event_file()
 		except:
 			print("Invalid Date!")
+			print(f"Failed to add event: {new_desc}")
 
 	def __str__(self):
 		"""
@@ -228,7 +260,7 @@ class Calendar:
 		for i in range(len(self.events)):
 			ev = self.events[i]
 			cal_str += f'\n{str(i + 1).zfill(2)}. {str(ev["day"]).zfill(2)}/{str(ev["month"]).zfill(2)}/' \
-					   f'{ev["year"]} - {ev["description"]} '
+				f'{ev["year"]} - {ev["description"]} '
 		return cal_str
 
 	def print_events(self):
