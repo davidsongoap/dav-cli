@@ -4,7 +4,9 @@
 # Module: Email
 # Dav Project
 
-import email, getpass, imaplib
+import email
+import getpass
+import imaplib
 from email.header import decode_header, make_header
 from sys import argv as args
 from sys import exit
@@ -12,13 +14,21 @@ import json
 import os
 import sys
 
+import colorama
+colorama.init()
+
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
-import dav
+from dav import get_config
+
+
 def main():
+	# comment this line if dont get any errors!
+	print("\033[93m[WARNING]: Don't forget to allow access to Less Secure Apps in your email settings.\n\033[0m")
+
 	argv = list(map(str.lower, args[1:]))
 
 	# read config file
-	config = dav.get_config()
+	config = get_config()
 
 	if argv[0] == "g":
 		service = ".gmail"
@@ -29,7 +39,6 @@ def main():
 
 	box = 'unseen'
 	n_read = 5
-
 
 	def valArg(arg):
 		global box
@@ -42,7 +51,6 @@ def main():
 			elif arg == 'edit':
 				os.system(f"{config['text_editor']} myemail.py")
 			return
-
 
 	if len(argv) >= 2:
 		for i in range(1, len(argv)):
@@ -96,7 +104,8 @@ mail <number>   : show <n> emails """)
 		typ, msg_data = m.fetch(i.decode(), '(RFC822)')
 		for response_part in msg_data:
 			if isinstance(response_part, tuple):
-				msg = email.message_from_string(response_part[1].decode('iso-8859-1'))
+				msg = email.message_from_string(
+					response_part[1].decode('iso-8859-1'))
 				msgs.append(msg)
 				from_m = make_header(decode_header(msg['from']))
 				date = make_header(decode_header(msg['Date']))
@@ -106,5 +115,7 @@ mail <number>   : show <n> emails """)
 					  f"DATE: {str(date)[:-5]}")
 	m.close()
 	print(f"{'-' * ns}----------------{'-' * ns}")
+
+
 if __name__ == '__main__':
-    main()
+	main()
