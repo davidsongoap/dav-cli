@@ -4,10 +4,10 @@
 # Module: Calendar
 # Dav Project
 
+# imports
 import os
 from sys import argv
 from calendav import Calendar
-
 
 def main():
 	args = list(map(str.lower, argv[1:]))
