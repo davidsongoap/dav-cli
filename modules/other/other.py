@@ -4,9 +4,9 @@
 # Module: Other
 # Dav Project
 
+# imports
 import os
 from sys import argv as args
-
 import sys
 
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
@@ -29,7 +29,6 @@ def main():
 	elif argv[0] == 'edit':
 		os.chdir("../../")
 		os.system(f"{config['text_editor']} .")
-		os.system(f"{config['text_editor']} dav.py")
 
 	elif argv[0] == 'config':
 		os.chdir("../../config")
