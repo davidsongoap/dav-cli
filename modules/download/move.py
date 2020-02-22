@@ -5,17 +5,16 @@
 # Dav Project
 
 # imports
-from dav import get_config
 import os
 import shutil
 from sys import exit
 import sys
 import numpy as np
 import colorama
-
 colorama.init()
 
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
+from dav import get_config
 
 # read config file
 config = get_config()
