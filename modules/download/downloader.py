@@ -4,26 +4,25 @@
 # Module: Downloader
 # Dav Project
 
+# imports
+from dav import get_config
 import os
-
 from sys import argv, exit
 import sys
-import platform
 import subprocess
 from tqdm import tqdm
-import json
-
+import colorama
+colorama.init()
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
-import dav
+
+# read config file
+config = get_config()
 
 
 def main():
 	# comment this line if dont get any errors!
-	print("[WARNING]: You'll need FFmpeg installed for the mp3 conversion\n"
-		  "check out -> http://blog.gregzaal.com/how-to-install-ffmpeg-on-windows/ \n")
-
-	# read config file
-	config = dav.get_config()
+	print("\033[93m[WARNING]: You'll need FFmpeg installed for the mp3 conversion\n"
+		  "check out -> http://blog.gregzaal.com/how-to-install-ffmpeg-on-windows/ \n\033[0m")
 
 	# Song Directory
 	if not os.path.exists('Songs'):
@@ -64,15 +63,18 @@ def main():
 	else:
 		print("file must be a .txt")
 		exit(0)
+	download_songs(path)
 
+
+def download_songs(path):
 	try:
-		file = open(path, 'r')
+		with open(path) as file:
+			# read data
+			lines = file.readlines()
+			file.seek(0)
 	except:
 		print("file not found :(")
 		exit(0)
-
-	lines = file.readlines()
-	file.seek(0)
 
 	if len(lines) == 0:
 		print("file is empty!")
@@ -86,12 +88,19 @@ def main():
 		for i in tqdm(range(len(lines))):
 			url = lines[i].strip()
 			# skip empty urls
-			if not url: continue
-			os.system(f'youtube-dl --extract-audio --output "%(title)s.%(ext)s" -q -x --audio-format mp3 {url}')
+			if not url:
+				continue
+			os.system(
+				f'youtube-dl --extract-audio --output "%(title)s.%(ext)s" -q -x --audio-format mp3 {url}')
+
+		# clear the file
 		open(path, 'w').close()
+		move_songs()
 	except:
 		print("ocorreu um erro no download")
 
+
+def move_songs():
 	# move downloaded song
 	os.chdir('..')
 	os.system(f'{config["modules"]["download"]["runwith"]} move.py')
