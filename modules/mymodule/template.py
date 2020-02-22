@@ -6,16 +6,17 @@
 # Feel free to use argparse
 # or any parser you prefer
 
+# imports
 import os
 import sys
 from sys import argv
 from sys import exit
 
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
-import dav
+from dav import get_config
 
 def main():
-	config = dav.get_config()
+	config = get_config()
 
 	args = list(map(str.lower, argv[1:]))
 
