@@ -4,12 +4,12 @@
 # Class: Calendar
 # Dav Project
 
+#imports
 import json
 from datetime import datetime
 import calendar
 import colorama
 colorama.init()
-
 
 class Calendar:
 	def __init__(self, event_file, config_file):
@@ -230,8 +230,7 @@ class Calendar:
 
 		try:
 			# date validation
-			new_ev_date = datetime(
-				day=int(day), month=int(month), year=int(year))
+			datetime(day=int(day), month=int(month), year=int(year))
 
 			# create event
 			new_event = {
@@ -245,6 +244,7 @@ class Calendar:
 			# add event
 			self.events.append(new_event)
 			self.update_event_file()
+			print(f"Event: {new_desc} has been added")
 		except:
 			print("Invalid Date!")
 			print(f"Failed to add event: {new_desc}")
