@@ -13,7 +13,7 @@ import sys
 import os
 
 from difflib import SequenceMatcher
-sys.path.append(f'\"{os.environ["USERPROFILE"]}\\dav-cli\"')
+sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
 
 config = dav.get_config()
 

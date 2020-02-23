@@ -12,7 +12,7 @@ import sys
 from sys import argv
 from sys import exit
 
-sys.path.append(f'\"{os.environ["USERPROFILE"]}\\dav-cli\"')
+sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
 from dav import get_config
 
 def main():

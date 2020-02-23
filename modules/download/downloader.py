@@ -12,7 +12,7 @@ import subprocess
 from tqdm import tqdm
 import colorama
 colorama.init()
-sys.path.append(f'\"{os.environ["USERPROFILE"]}\\dav-cli\"')
+sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
 from dav import get_config
 
 # read config file
@@ -22,7 +22,7 @@ config = get_config()
 def main():
 	# comment this line if dont get any errors!
 	print("\033[93m[WARNING]: You'll need FFmpeg installed for the mp3 conversion\n"
-		  "check out -> http://blog.gregzaal.com/how-to-install-ffmpeg-on-windows/ \n\033[0m")
+		  "check out -> http://blog.gregzaal.com/how-to-install-ffmpeg-on-windows/ \033[0m")
 
 	# Song Directory
 	if not os.path.exists('Songs'):
@@ -97,7 +97,7 @@ def download_songs(path):
 		open(path, 'w').close()
 		move_songs()
 	except:
-		print("ocorreu um erro no download")
+		print("An error as occurred with the download")
 
 
 def move_songs():

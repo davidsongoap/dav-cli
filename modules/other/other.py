@@ -9,7 +9,7 @@ import os
 from sys import argv as args
 import sys
 
-sys.path.append(f'\"{os.environ["USERPROFILE"]}\\dav-cli\"')
+sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
 import dav
 
 def main():
@@ -20,9 +20,6 @@ def main():
 	if argv[0] in ['music']:
 		path = config["modules"][argv[0]]["path"]
 		complete_path = f"{os.environ['USERPROFILE']}\\{path}"
-		if not os.path.exists(complete_path):
-			os.mkdir(complete_path)
-			print(f"created folder {path}")
 		os.chdir(complete_path)
 		os.system("start .")
 
