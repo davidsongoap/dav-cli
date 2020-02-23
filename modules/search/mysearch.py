@@ -13,12 +13,12 @@ from difflib import SequenceMatcher
 import sys
 
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
-import dav
+from dav import get_config
 
 argv = list(map(str.lower, argv[1:]))
 
 def main():
-	config = dav.get_config()
+	config = get_config()
 
 	print("use [exit] or [quit] to close")
 	print("Search :")
