@@ -5,7 +5,6 @@
 # Dav Project
 
 # imports
-import dav
 from sys import argv
 from sys import exit
 import subprocess
@@ -14,8 +13,9 @@ import os
 
 from difflib import SequenceMatcher
 sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
+from dav import get_config
 
-config = dav.get_config()
+config = get_config()
 
 
 def main():
