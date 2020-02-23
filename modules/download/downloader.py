@@ -12,7 +12,7 @@ import subprocess
 from tqdm import tqdm
 import colorama
 colorama.init()
-sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
+sys.path.append(f'\"{os.environ["USERPROFILE"]}\\dav-cli\"')
 from dav import get_config
 
 # read config file

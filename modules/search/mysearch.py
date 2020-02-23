@@ -12,7 +12,7 @@ import subprocess
 from difflib import SequenceMatcher
 import sys
 
-sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
+sys.path.append(f'\"{os.environ["USERPROFILE"]}\\dav-cli\"')
 import dav
 
 argv = list(map(str.lower, argv[1:]))

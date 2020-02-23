@@ -9,7 +9,7 @@ import os
 from sys import argv as args
 import sys
 
-sys.path.append(f'{os.environ["USERPROFILE"]}\\dav-cli')
+sys.path.append(f'\"{os.environ["USERPROFILE"]}\\dav-cli\"')
 import dav
 
 def main():
