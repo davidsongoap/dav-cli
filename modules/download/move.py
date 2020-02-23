@@ -20,7 +20,7 @@ from dav import get_config
 config = get_config()
 directory = "./Songs"
 artist_path = f'{os.environ["USERPROFILE"]}\\{config["modules"]["music"]["path"]}\\Artists'
-all_music_path = f'{os.environ["USERPROFILE"]}\\{config["modules"]["music"]["path"]}\\All Music'
+all_music_path = f'{os.environ["USERPROFILE"]}\\{config["modules"]["music"]["path"]}\\AllMusic'
 
 
 def get_artists():
@@ -99,8 +99,9 @@ def move_file(name):
 		# move song to phone folder
 		shutil.move(f"{directory}\\{name}", all_music_path)
 		print(f"\033[92m{name} has been added to the library.\033[0m")
-	except:
-		print(f"\033[93{name} already exists in the library!\033[0m")
+	except Exception as e:
+		print(e)
+		print(f"\033[93m{name} already exists in the library!\033[0m")
 
 
 def main():
