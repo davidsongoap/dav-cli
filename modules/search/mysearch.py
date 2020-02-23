@@ -34,3 +34,5 @@ def main():
 				subprocess.Popen(f"{browser} -incognito {search}", shell=True)
 			else:
 				subprocess.Popen(f"{browser} -new-tab -incognito \"? {search}\"", shell=True)
+if __name__ == "__main__":
+	main()
