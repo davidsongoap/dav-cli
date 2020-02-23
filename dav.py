@@ -19,8 +19,11 @@ if sys.version_info[0] < 3:
 
 def get_config():
 	# read file
-	with open(f'{os.environ["USERPROFILE"]}\\dav-cli\\config\\config.json', 'r') as myfile:
+	currdir = os.getcwd()
+	os.chdir(f"{os.environ['USERPROFILE']}\\dav-cli")
+	with open('./config/config.json', 'r') as myfile:
 		read_data = myfile.read()
+	os.chdir(currdir)
 	return json.loads(read_data)
 
 
