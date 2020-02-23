@@ -47,7 +47,7 @@
       ],
       "file": "other.py music",
       "description": "open music folder",
-      "path": "MyMusic",
+      "path": "Music",
       "runwith": "python"
     },
     "games": {
