@@ -85,7 +85,7 @@
         "edit"
       ],
       "file": "other.py edit",
-      "description": "edit the project (default text editor is sublime text)",
+      "description": "edit the project (default editor is notepad++)",
       "runwith": "python"
     },
     "config": {
@@ -107,7 +107,7 @@
       "runwith": "python"
     }
   },
-  "text_editor": "subl",
+  "text_editor": "start notepad++",
   "browser": "chrome",
   "paths": {
   }
